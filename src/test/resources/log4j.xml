@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %p [%c] %X{requestId} %X{ipAddress} - &lt;%m&gt;%n"/>
+		</layout>
+	</appender>
+
+	<appender name="logfile" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="junit.log"/>
+		<param name="MaxFileSize" value="2048KB"/>
+		<param name="MaxBackupIndex" value="5"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %p [%c] %X{requestId} %X{ipAddress} - %m%n"/>
+		</layout>
+	</appender>
+
+	<!-- Root ===============================================================================-->
+
+	<root>
+		<level value="INFO"/>
+		<appender-ref ref="stdout"/>
+		<appender-ref ref="logfile"/>
+	</root>
+
+</log4j:configuration>
